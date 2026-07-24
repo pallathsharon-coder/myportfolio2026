@@ -1,0 +1,14 @@
+# Claude Code local tooling (not part of the portfolio)
+.claude/
+.mcp.json
+
+# OS / editor cruft
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+*.swp
+*~
+
+# Logs / temp
+*.log

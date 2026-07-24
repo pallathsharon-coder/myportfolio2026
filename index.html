@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sharon Pallath — 3D Visualizer &amp; Designer</title>
+<meta name="description" content="Sharon Pallath — Graphic Designer, 3D Visualizer and Video Editor based in Dubai. Twelve years of dimensional craft.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23050505'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='Arial Black' fill='%23ECE3C2'>S</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@300;400;500&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ══════════ PRELOADER ══════════ -->
+<div class="preloader" id="preloader">
+  <div class="preloader__frame">
+    <span class="preloader__corner preloader__corner--tl">SP®</span>
+    <span class="preloader__corner preloader__corner--tr">EST. 2011</span>
+    <span class="preloader__corner preloader__corner--bl" id="preloader-word">3D VISUALIZATION</span>
+    <span class="preloader__corner preloader__corner--br">DXB 25.2048° N</span>
+  </div>
+  <div class="preloader__center">
+    <div class="preloader__counter"><span id="counter">000</span></div>
+    <div class="preloader__bar"><span id="preloader-bar"></span></div>
+    <div class="preloader__hint">ENTERING THE GALLERY</div>
+  </div>
+  <div class="preloader__slats">
+    <div class="preloader__slat"></div>
+    <div class="preloader__slat"></div>
+    <div class="preloader__slat"></div>
+    <div class="preloader__slat"></div>
+    <div class="preloader__slat"></div>
+  </div>
+</div>
+
+<!-- ══════════ FIXED HUD ══════════ -->
+<header class="hud" id="hud">
+  <div class="hud__item hud__item--tl" data-hover>
+    <a href="#top" class="hud__logo">SHARON<em>PALLATH®</em></a>
+  </div>
+  <div class="hud__item hud__item--tc">
+    <span class="hud__label">DUBAI, UAE — <span id="clock">00:00:00</span> GMT+4</span>
+  </div>
+  <div class="hud__item hud__item--tr">
+    <button class="menu-btn" id="menu-btn" data-hover aria-label="Menu">
+      <span class="menu-btn__label" id="menu-btn-label">MENU</span>
+      <span class="menu-btn__lines"><i></i><i></i></span>
+    </button>
+  </div>
+  <div class="hud__item hud__item--bl">
+    <span class="hud__label">GRAPHIC DESIGN / 3D / VIDEO</span>
+  </div>
+  <div class="hud__item hud__item--br">
+    <span class="hud__label" id="scroll-progress">000%</span>
+  </div>
+</header>
+
+<!-- ══════════ MENU OVERLAY ══════════ -->
+<nav class="menu" id="menu" aria-hidden="true">
+  <div class="menu__inner">
+    <div class="menu__links">
+      <a href="#gallery"   class="menu__link" data-hover data-menu-index="01"><span>GALLERY</span></a>
+      <a href="#about"     class="menu__link" data-hover data-menu-index="02"><span>ABOUT</span></a>
+      <a href="#craft"     class="menu__link" data-hover data-menu-index="03"><span>CRAFT</span></a>
+      <a href="#archive"   class="menu__link" data-hover data-menu-index="04"><span>ARCHIVE</span></a>
+      <a href="#contact"   class="menu__link" data-hover data-menu-index="05"><span>CONTACT</span></a>
+    </div>
+    <div class="menu__meta">
+      <div class="menu__meta-col">
+        <span class="menu__meta-label">SOCIALS</span>
+        <a href="https://www.behance.net/" target="_blank" rel="noopener" data-hover>BEHANCE ↗</a>
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener" data-hover>LINKEDIN ↗</a>
+      </div>
+      <div class="menu__meta-col">
+        <span class="menu__meta-label">CONTACT</span>
+        <a href="mailto:pallathsharon@gmail.com" data-hover>PALLATHSHARON@GMAIL.COM</a>
+        <a href="tel:+971553493156" data-hover>+971 55 349 3156</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════ CUSTOM CURSOR ══════════ -->
+<div class="cursor" id="cursor"><span class="cursor__label" id="cursor-label"></span></div>
+<div class="cursor-dot" id="cursor-dot"></div>
+
+<!-- ══════════ GRAIN ══════════ -->
+<div class="grain" aria-hidden="true"></div>
+
+<div id="smooth-wrapper">
+  <div id="smooth-content">
+
+    <!-- ══════════ HERO ══════════ -->
+    <section class="hero" id="top">
+      <div class="hero__bg" data-speed="0.8">
+        <img src="assets/img/hero.jpg" alt="Dark museum hall with a floating golden wireframe sculpture" id="hero-img">
+        <div class="hero__veil"></div>
+      </div>
+      <div class="hero__content">
+        <p class="hero__eyebrow" data-scramble>PORTFOLIO — VOL. 12</p>
+        <h1 class="hero__title">
+          <span class="hero__line" data-split>SHARON</span>
+          <span class="hero__line hero__line--offset" data-split>PALLATH</span>
+        </h1>
+        <div class="hero__sub">
+          <p class="hero__sub-line" data-scramble>A DIMENSIONAL PORTFOLIO</p>
+          <p class="hero__sub-line hero__sub-line--dim" data-scramble>OF EVERYTHING CREATIVE</p>
+        </div>
+      </div>
+      <div class="hero__foot">
+        <span class="hero__foot-item" data-scramble>3D VISUALIZER</span>
+        <span class="hero__foot-item" data-scramble>GRAPHIC DESIGNER</span>
+        <span class="hero__foot-item" data-scramble>VIDEO EDITOR</span>
+      </div>
+      <div class="hero__scroll" data-hover>
+        <span>SCROLL TO EXPLORE</span>
+        <i class="hero__scroll-line"></i>
+      </div>
+    </section>
+
+    <!-- ══════════ MARQUEE ══════════ -->
+    <section class="marquee-band">
+      <div class="marquee" data-marquee-dir="1">
+        <div class="marquee__track">
+          <span>3D VISUALIZATION ✦ BRANDING ✦ PACKAGING ✦ VIDEO EDITING ✦ AI VISUALS ✦ INTERIORS ✦&nbsp;</span>
+          <span>3D VISUALIZATION ✦ BRANDING ✦ PACKAGING ✦ VIDEO EDITING ✦ AI VISUALS ✦ INTERIORS ✦&nbsp;</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ MANIFESTO ══════════ -->
+    <section class="manifesto" id="about">
+      <div class="section-head">
+        <span class="section-head__index" data-scramble>001</span>
+        <span class="section-head__name" data-scramble>THE ARTIST</span>
+      </div>
+      <h2 class="manifesto__text" data-lines>
+        Twelve years shaping light, form and story — from photoreal interiors and product renders to brands, packaging and film. Rooted in India, sharpened in the UAE.
+      </h2>
+      <div class="manifesto__grid">
+        <figure class="manifesto__figure" data-tilt>
+          <div class="manifesto__figure-mask" data-reveal-img>
+            <img src="assets/img/about.jpg" alt="Classical bust dissolving into golden wireframe polygons" data-speed="0.9">
+          </div>
+          <figcaption class="manifesto__caption">
+            <span data-scramble>FIG. 01 — THE CRAFTSMAN</span>
+            <span data-scramble>STONE / WIREFRAME / LIGHT</span>
+          </figcaption>
+        </figure>
+        <div class="manifesto__aside">
+          <p class="manifesto__para">
+            Creative Graphic Designer, 3D Visualizer and Video Editor with over 12 years across the UAE and India.
+            Skilled in branding, social media creatives, packaging design, e-commerce visuals, product rendering,
+            interior visualization and video editing — building marketing material that lifts brand presence and
+            drives business growth.
+          </p>
+          <ul class="manifesto__stats">
+            <li class="stat"><span class="stat__num" data-count="12">0</span><span class="stat__plus">+</span><span class="stat__label">YEARS OF CRAFT</span></li>
+            <li class="stat"><span class="stat__num" data-count="8">0</span><span class="stat__plus"></span><span class="stat__label">DISCIPLINES</span></li>
+            <li class="stat"><span class="stat__num" data-count="4">0</span><span class="stat__plus"></span><span class="stat__label">LANGUAGES</span></li>
+            <li class="stat"><span class="stat__num" data-count="2">0</span><span class="stat__plus"></span><span class="stat__label">COUNTRIES</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ GALLERY (HORIZONTAL) ══════════ -->
+    <section class="gallery" id="gallery">
+      <div class="gallery__pin" id="gallery-pin">
+        <div class="section-head section-head--overlay">
+          <span class="section-head__index" data-scramble>002</span>
+          <span class="section-head__name" data-scramble>THE GALLERY — SELECTED WORK</span>
+        </div>
+        <div class="gallery__track" id="gallery-track">
+
+          <article class="exhibit" data-cursor="VIEW">
+            <div class="exhibit__media"><img src="assets/img/work-interior.jpg" alt="Luxury interior visualization with flowing curtains and golden light"></div>
+            <div class="exhibit__num">01</div>
+            <div class="exhibit__info">
+              <h3 class="exhibit__title">INTERIOR<br>VISUALIZATION</h3>
+              <p class="exhibit__tags">SEDAR GLOBAL — CORONA / V-RAY / 3DS MAX</p>
+            </div>
+          </article>
+
+          <article class="exhibit" data-cursor="VIEW">
+            <div class="exhibit__media"><img src="assets/img/work-product.jpg" alt="Premium smartphone product render on black stone"></div>
+            <div class="exhibit__num">02</div>
+            <div class="exhibit__info">
+              <h3 class="exhibit__title">PRODUCT<br>RENDERING</h3>
+              <p class="exhibit__tags">MOBILE &amp; TECH — E-COMMERCE VISUALS</p>
+            </div>
+          </article>
+
+          <article class="exhibit" data-cursor="VIEW">
+            <div class="exhibit__media"><img src="assets/img/work-packaging.jpg" alt="Matte black premium packaging with gold foil detail"></div>
+            <div class="exhibit__num">03</div>
+            <div class="exhibit__info">
+              <h3 class="exhibit__title">PACKAGING<br>DESIGN</h3>
+              <p class="exhibit__tags">RETAIL — STRUCTURE / FINISH / SHELF IMPACT</p>
+            </div>
+          </article>
+
+          <article class="exhibit" data-cursor="VIEW">
+            <div class="exhibit__media"><img src="assets/img/work-brand.jpg" alt="Brand identity flat lay with embossed logo on cream paper"></div>
+            <div class="exhibit__num">04</div>
+            <div class="exhibit__info">
+              <h3 class="exhibit__title">BRAND<br>IDENTITY</h3>
+              <p class="exhibit__tags">LOGO / GUIDELINES / COLLATERAL</p>
+            </div>
+          </article>
+
+          <article class="exhibit" data-cursor="VIEW">
+            <div class="exhibit__media"><img src="assets/img/work-video.jpg" alt="Amber light ribbons streaking through darkness"></div>
+            <div class="exhibit__num">05</div>
+            <div class="exhibit__info">
+              <h3 class="exhibit__title">MOTION<br>&amp; VIDEO</h3>
+              <p class="exhibit__tags">PREMIERE PRO / AFTER EFFECTS</p>
+            </div>
+          </article>
+
+          <article class="exhibit exhibit--end">
+            <div class="exhibit__end-inner">
+              <p data-scramble>END OF EXHIBITION</p>
+              <a class="exhibit__end-link" href="#contact" data-hover>COMMISSION A PIECE →</a>
+            </div>
+          </article>
+
+        </div>
+        <div class="gallery__progress"><span id="gallery-progress-bar"></span></div>
+      </div>
+    </section>
+
+    <!-- ══════════ CRAFT / EXPERTISE ══════════ -->
+    <section class="craft" id="craft">
+      <div class="section-head">
+        <span class="section-head__index" data-scramble>003</span>
+        <span class="section-head__name" data-scramble>THE CRAFT — EXPERTISE</span>
+      </div>
+      <ul class="craft__list">
+        <li class="craft__row" data-hover data-preview="assets/img/work-brand.jpg">
+          <span class="craft__no">01</span><span class="craft__name">CREATIVE DESIGNING</span><span class="craft__note">ART DIRECTION / CONCEPTS</span>
+        </li>
+        <li class="craft__row" data-hover data-preview="assets/img/work-interior.jpg">
+          <span class="craft__no">02</span><span class="craft__name">3D VISUALIZATION</span><span class="craft__note">INTERIORS / PRODUCTS</span>
+        </li>
+        <li class="craft__row" data-hover data-preview="assets/img/work-packaging.jpg">
+          <span class="craft__no">03</span><span class="craft__name">PACKAGE DESIGNING</span><span class="craft__note">STRUCTURE / PRINT</span>
+        </li>
+        <li class="craft__row" data-hover data-preview="assets/img/work-video.jpg">
+          <span class="craft__no">04</span><span class="craft__name">VIDEO EDITING</span><span class="craft__note">CUT / GRADE / MOTION</span>
+        </li>
+        <li class="craft__row" data-hover data-preview="assets/img/work-product.jpg">
+          <span class="craft__no">05</span><span class="craft__name">AI VISUAL CREATIONS</span><span class="craft__note">GENERATIVE PIPELINES</span>
+        </li>
+        <li class="craft__row" data-hover data-preview="assets/img/hero.jpg">
+          <span class="craft__no">06</span><span class="craft__name">SOCIAL &amp; WEB DESIGN</span><span class="craft__note">CAMPAIGNS / E-COMMERCE</span>
+        </li>
+      </ul>
+      <div class="craft__preview" id="craft-preview"><img src="assets/img/work-interior.jpg" alt="" id="craft-preview-img"></div>
+      <div class="craft__tools">
+        <span class="craft__tools-label" data-scramble>INSTRUMENTS —</span>
+        <span class="tool-chip">3DS MAX</span><span class="tool-chip">CORONA</span><span class="tool-chip">V-RAY</span>
+        <span class="tool-chip">PHOTOSHOP</span><span class="tool-chip">ILLUSTRATOR</span><span class="tool-chip">PREMIERE PRO</span>
+        <span class="tool-chip">AFTER EFFECTS</span><span class="tool-chip">AUTOCAD</span>
+      </div>
+    </section>
+
+    <!-- ══════════ ARCHIVE / EXPERIENCE ══════════ -->
+    <section class="archive" id="archive">
+      <div class="section-head">
+        <span class="section-head__index" data-scramble>004</span>
+        <span class="section-head__name" data-scramble>THE ARCHIVE — EXPERIENCE</span>
+      </div>
+      <div class="archive__timeline">
+        <div class="archive__spine" id="archive-spine"></div>
+
+        <article class="era">
+          <span class="era__years">2023 — PRESENT</span>
+          <div class="era__body">
+            <h3 class="era__company">BLUE SKY PHONES CO. LLC</h3>
+            <p class="era__role">GRAPHIC DESIGNER / 3D VISUALIZER / VIDEO EDITOR</p>
+            <p class="era__desc">Graphic design, 3D visualization, video production, branding and social media — content that strengthens brand presence and supports business growth.</p>
+          </div>
+        </article>
+
+        <article class="era">
+          <span class="era__years">2022 — 2023</span>
+          <div class="era__body">
+            <h3 class="era__company">OSKAR PHONES LLC</h3>
+            <p class="era__role">GRAPHIC DESIGNER / 3D VISUALIZER</p>
+            <p class="era__desc">3D renders, packaging design and marketing creatives for mobile accessories; e-commerce visuals, banners and promotional material with strict brand consistency.</p>
+          </div>
+        </article>
+
+        <article class="era">
+          <span class="era__years">2013 — 2022</span>
+          <div class="era__body">
+            <h3 class="era__company">SEDAR GLOBAL</h3>
+            <p class="era__role">GRAPHIC DESIGNER / 3D VISUALIZER / VIDEO EDITOR</p>
+            <p class="era__desc">Nine years of logos, interior visuals, product renders and video across web, e-commerce, social and print for the region's leading window-couture house.</p>
+          </div>
+        </article>
+
+        <article class="era">
+          <span class="era__years">2011 — 2013</span>
+          <div class="era__body">
+            <h3 class="era__company">E PRINT DPS</h3>
+            <p class="era__role">GRAPHIC DESIGNER</p>
+            <p class="era__desc">Wedding cards, album layouts, brochures and promotional print — high-quality production design delivered on deadline.</p>
+          </div>
+        </article>
+
+        <article class="era era--edu">
+          <span class="era__years">FOUNDATION</span>
+          <div class="era__body">
+            <h3 class="era__company">COCHIN CADD CENTRE</h3>
+            <p class="era__role">MASTER DIPLOMA — MULTIMEDIA &amp; ANIMATION</p>
+            <p class="era__desc">Backed by a Diploma in Instrumentation Technology — where precision met imagination.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ══════════ CONTACT ══════════ -->
+    <section class="contact" id="contact">
+      <div class="section-head">
+        <span class="section-head__index" data-scramble>005</span>
+        <span class="section-head__name" data-scramble>THE COMMISSION — CONTACT</span>
+      </div>
+      <a class="contact__title" href="mailto:pallathsharon@gmail.com" data-hover data-cursor="SAY HI">
+        <span class="contact__line" data-split>LET'S</span>
+        <span class="contact__line contact__line--accent" data-split>CREATE</span>
+      </a>
+      <div class="contact__meta">
+        <div class="contact__col">
+          <span class="contact__label" data-scramble>WRITE</span>
+          <a href="mailto:pallathsharon@gmail.com" data-hover>pallathsharon@gmail.com</a>
+        </div>
+        <div class="contact__col">
+          <span class="contact__label" data-scramble>CALL</span>
+          <a href="tel:+971553493156" data-hover>+971 55 349 3156</a>
+        </div>
+        <div class="contact__col">
+          <span class="contact__label" data-scramble>VISIT</span>
+          <span>AL NAHDA 1, DUBAI, UAE</span>
+        </div>
+        <div class="contact__col">
+          <span class="contact__label" data-scramble>FOLLOW</span>
+          <a href="https://www.behance.net/" target="_blank" rel="noopener" data-hover>BEHANCE ↗</a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noopener" data-hover>LINKEDIN ↗</a>
+        </div>
+        <div class="contact__col">
+          <span class="contact__label" data-scramble>DOSSIER</span>
+          <a href="cv.pdf" target="_blank" rel="noopener" data-hover>DOWNLOAD CV ↓</a>
+        </div>
+      </div>
+      <footer class="footer">
+        <span>© 2026 SHARON PALLATH</span>
+        <span>EN / ML / TA / HI</span>
+        <span>DESIGNED IN DUBAI</span>
+        <button class="footer__top" id="back-to-top" data-hover>BACK TO TOP ↑</button>
+      </footer>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrambleTextPlugin.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomEase.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
