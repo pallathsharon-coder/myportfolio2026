@@ -1,6 +1,7 @@
 # Claude Code local tooling (not part of the portfolio)
 .claude/
 .mcp.json
+CLAUDE.md
 
 # OS / editor cruft
 Thumbs.db

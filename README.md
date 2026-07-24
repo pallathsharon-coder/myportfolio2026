@@ -1,37 +1,34 @@
-# Sharon Pallath — Portfolio Prototype
+# Sharon Pallath — Portfolio 2026
 
-A single-page portfolio for Sharon Pallath (Graphic Designer · 3D Visualizer · Video Editor, Dubai),
-styled after the motion language of [indrajaal-museum.com](https://www.indrajaal-museum.com/):
-black void, parchment-cream accents, huge condensed display type, monospace HUD labels,
-scramble-text, and scroll-driven choreography.
+Portfolio for Sharon Pallath (3D Visualizer · Graphic Designer · Video Editor, Dubai).
+Editorial fashion aesthetic: dark grid backdrop, bone ivory `#ECE8E0` on near-black,
+Italiana display type + Inter labels.
 
 ## Run it
 
-Just open `index.html` in any modern browser (double-click works — no build step, no server needed).
-Internet is required on first load for the Google Fonts + GSAP CDN files.
+Open `index.html` in any modern browser — no build step. Internet needed on first load
+(Google Fonts + GSAP CDN).
 
-## What's inside
+## Pages
+
+| Page | What it is |
+|---|---|
+| `index.html` | Single-viewport home — 3D orbit gallery. Wheel/drag rotates 8 works on a perspective ring; **spiral ↔ list** toggle morphs ring into a flat row. B&W images colorize on hover; mouse move tilts the whole scene. Rotating circular text badge, live caption index. |
+| `portfolio.html` | Selected-work row list with cursor-following image previews |
+| `about.html` | Name, intro, portrait, story, selected seasons |
+| `contact.html` | Email / phone / studio / socials / CV columns |
+
+Menu (top-right pill) → Home / Portfolio / About / Contact on every page.
+
+## Structure
 
 | Path | Purpose |
 |---|---|
-| `index.html` | All content/markup (from the resume PDF) |
-| `css/style.css` | Museum aesthetic — palette, type scale, layout, responsive rules |
-| `js/main.js` | Motion engine (GSAP 3.13: ScrollSmoother, ScrollTrigger, SplitText, ScrambleText, CustomEase) |
-| `assets/img/*.jpg` | Web-optimized visuals, generated with Magnific / Google Nano Banana 2 Pro |
-| `assets/img/src/*.png` | Full-resolution originals of the generated images |
-| `assets/cv-pages/` | Page renders of the resume PDF |
-| `cv.pdf` | The resume (linked as "Download CV" in the contact section) |
+| `css/style.css` | Whole theme — palette, type, grid bg, orbit stage, subpages |
+| `js/home.js` | Orbit engine — ring math, scatter, list morph, wheel/drag input, parallax, loader |
+| `js/site.js` | Shared — menu overlay, subpage reveals, portfolio hover previews |
+| `assets/img/*.jpg` | Web-optimized works (Magnific / Nano Banana 2), `src/*.png` full-res |
+| `cv.pdf` | Resume — "Download CV" on contact page |
 
-## Motion map
-
-- **Preloader** — 000→100 counter, cycling scramble words, five-slat curtain reveal
-- **Hero** — character-by-character title rise, slow image de-zoom, parallax + fade on scroll
-- **Marquee** — outlined text band whose speed reacts to scroll velocity
-- **The Artist** — line-masked statement reveal, clip-path figure reveal, animated stat counters
-- **The Gallery** — pinned horizontal exhibition (vertical on mobile), inner-image parallax, progress rail
-- **The Craft** — hoverable discipline rows with a floating image preview that follows the cursor
-- **The Archive** — timeline with a scroll-drawn spine
-- **Contact** — giant per-character reveal with elastic hover wave; custom cursor with "SAY HI" label
-
-Regenerate or replace any visual by dropping a new file over `assets/img/*.jpg` (4:3 for work images,
-wide for `hero.jpg`, 4:5 for `about.jpg`).
+Works are defined in the `WORKS` array in `js/home.js` (home) and the rows in
+`portfolio.html` — swap image paths/captions there to update.
