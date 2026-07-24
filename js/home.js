@@ -41,8 +41,15 @@ const state = {
   tiltX: 0, tiltY: 0,            // mouse parallax (deg)
   view: "spiral",
   active: -1,
-  dragging: false
+  dragging: false,
+  lastInteract: 0,               // ms timestamp of last wheel/drag
+  autoDir: 1                     // list auto-drift direction (ping-pong)
 };
+
+/* auto-drift: very slow ambient motion, pauses while the user interacts */
+const AUTO_DELAY = 2600;         // ms of idle before drift resumes
+const AUTO_ROT = 1.6;            // deg per second (spiral)
+const AUTO_POS = 0.07;           // cards per second (list)
 
 let cards = [];
 let orbitEl, capNum, capText;
@@ -74,8 +81,22 @@ function build() {
 }
 
 /* ── render loop ──────────────────────────────────────── */
-function render() {
+function render(time, dtMs) {
   const { radius, spacing } = M;
+
+  /* ambient auto-scroll */
+  const idle = performance.now() - state.lastInteract > AUTO_DELAY;
+  if (!reduceMotion && idle && !state.dragging && !document.body.classList.contains("menu-open")) {
+    const dt = Math.min(dtMs || 16.7, 64) / 1000;
+    if (state.view === "spiral") {
+      state.rotTarget -= AUTO_ROT * dt;
+    } else {
+      state.posTarget += AUTO_POS * state.autoDir * dt;
+      if (state.posTarget >= N - 1) { state.posTarget = N - 1; state.autoDir = -1; }
+      if (state.posTarget <= 0) { state.posTarget = 0; state.autoDir = 1; }
+    }
+  }
+
   const ease = state.dragging ? 0.22 : 0.075;
   state.rot += (state.rotTarget - state.rot) * ease;
   state.pos += (state.posTarget - state.pos) * ease;
@@ -135,6 +156,7 @@ function bindInput() {
 
   window.addEventListener("wheel", (e) => {
     if (document.body.classList.contains("menu-open")) return;
+    state.lastInteract = performance.now();
     const d = Math.max(-140, Math.min(140, e.deltaY));
     if (state.view === "spiral") state.rotTarget -= d * 0.09;
     else state.posTarget = Math.max(0, Math.min(N - 1, state.posTarget + d * 0.004));
@@ -143,11 +165,13 @@ function bindInput() {
   let px = 0, moved = 0;
   stage.addEventListener("pointerdown", (e) => {
     state.dragging = true; moved = 0; px = e.clientX;
+    state.lastInteract = performance.now();
     stage.setPointerCapture(e.pointerId);
   });
   stage.addEventListener("pointermove", (e) => {
     if (state.dragging) {
       const dx = e.clientX - px; px = e.clientX; moved += Math.abs(dx);
+      state.lastInteract = performance.now();
       if (state.view === "spiral") state.rotTarget += dx * 0.22;
       else state.posTarget = Math.max(0, Math.min(N - 1, state.posTarget - dx * 0.006));
     }
@@ -197,6 +221,7 @@ function bindToggle() {
   /* card click → bring to front */
   cards.forEach((el, i) => {
     el.addEventListener("click", () => {
+      state.lastInteract = performance.now();
       if (state.view === "spiral") {
         let t = -i * STEP;
         while (t - state.rotTarget > 180) t -= 360;
