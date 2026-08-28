@@ -95,6 +95,7 @@ a, button { touch-action: manipulation; }
 .bar__toggle {
   position: absolute; left: 50%; transform: translateX(-50%);
   display: flex; align-items: center; gap: 0.85rem;
+  transition: opacity 0.35s var(--ease);
 }
 .toggle-btn {
   font-size: 0.78rem; font-weight: 500; letter-spacing: 0.02em;
@@ -114,9 +115,30 @@ a, button { touch-action: manipulation; }
   font-size: 0.78rem; font-weight: 500; letter-spacing: 0.02em;
   transition: transform 0.45s var(--ease), background-color 0.4s;
 }
-.pill i { width: 5px; height: 5px; border-radius: 50%; background: var(--ink); transition: transform 0.4s var(--ease); }
+.pill i {
+  position: relative;
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--ink);
+  transition: transform 0.4s var(--ease), width 0.4s var(--ease),
+              height 0.4s var(--ease), background-color 0.3s;
+}
+.pill i::before, .pill i::after {
+  content: ""; position: absolute; left: 50%; top: 50%;
+  width: 11px; height: 1.5px; border-radius: 1px;
+  background: var(--ink);
+  transform: translate(-50%, -50%) scaleX(0);
+  transition: transform 0.4s var(--ease);
+}
 .pill:hover { transform: scale(1.05); background: #fff; }
 .pill:hover i { transform: scale(1.5); }
+
+/* menu open → dot morphs into a close X, bar lifts above the overlay */
+body.menu-open .bar { z-index: 210; }
+body.menu-open .bar__toggle { opacity: 0; pointer-events: none; }
+body.menu-open .pill i { width: 11px; height: 11px; background: transparent; }
+body.menu-open .pill:hover i { transform: rotate(90deg); }
+body.menu-open .pill i::before { transform: translate(-50%, -50%) rotate(45deg) scaleX(1); }
+body.menu-open .pill i::after  { transform: translate(-50%, -50%) rotate(-45deg) scaleX(1); }
 
 /* ═══════════ HOME STAGE ═══════════ */
 
