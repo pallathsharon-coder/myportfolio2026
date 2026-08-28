@@ -1,0 +1,7 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=$HOME/public_html
+    - /bin/mkdir -p $DEPLOYPATH
+    - /bin/cp -f index.html portfolio.html about.html contact.html cv.pdf $DEPLOYPATH/
+    - /bin/cp -Rf css js assets $DEPLOYPATH/
